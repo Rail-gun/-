@@ -78,7 +78,7 @@ public class a_student_leave {
 			   this.states = "申请销假";
 		   }
 	   }
-	   //      
+	    
 		
 	}
 
