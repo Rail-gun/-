@@ -22,12 +22,12 @@
           <canvas id="demo-canvas"></canvas>
           <div class="logo_box">
             <h3>功能选择</h3>
-            <form action="apply_cancel" name="f" method="post">
-              <div class="mb2"><a class="act-but submit" href="student_apply.jsp" style="color: #FFFFFF">请假</a></div>
-            </form>
-            <form action="##" name="ff" method="post">
-              <div class="mb2"><a class="act-but submit" href="student_cancel.jsp" style="color: #FFFFFF;position:absolute; z-index:100;width:330px ">销假</a></div>
-            </form>
+			<!-- <form action="#" name="f" method="post"> -->
+              <div class="mb2"><a class="act-but submit" href="stu_apply?logname=${logname}" style="color: #FFFFFF">请假</a></div>
+            <!-- </form>
+            <form action="##" name="ff" method="post"> -->
+              <div class="mb2"><a class="act-but submit" href="stu_cancel?logname=${logname}" style="color: #FFFFFF;position:absolute; z-index:100;width:330px ">销假</a></div>
+            <!-- </form> -->
           </div>
         </div>
       </div>
