@@ -11,8 +11,7 @@ import java.sql.*;
 	        try {  
 	            Class.forName(name);//指定连接类型  
 	            conn = DriverManager.getConnection(url, user, password);//获取连接  
-	            return conn;
-	            
+	            return conn;       
 	        } catch (Exception e) {  
 	            e.printStackTrace(); 
 	            return null;   
@@ -20,10 +19,32 @@ import java.sql.*;
 	    } 
 	    public void close() {  
 	        try {  
-	            this.conn.close();  
+	            DBHelper.conn.close();  
 	        } catch (SQLException e) {  
 	            e.printStackTrace();  
 	        }  
 	    }  
+	    public void querystudents(a_student_leave leave_list[]) throws SQLException{
+	    	DBHelper.conn = DBHelper.connect();
+	    	 String sql = "SELECT * FROM student_leave;";
+    		 Statement psmt = conn.createStatement();  
+    		 ResultSet rs = psmt.executeQuery(sql);
+    		 int i= 0;
+    		 while (rs.next())
+             {
+    			 leave_list[i] = new a_student_leave();
+    			 
+    			 leave_list[i].setStudentID(rs.getString("studentID"));
+    			 leave_list[i].setName(rs.getString("name"));
+    			 leave_list[i].setReason(rs.getString("reason"));
+    			 leave_list[i].setLeave_date(rs.getString("leave_date"));
+    			 leave_list[i].setReturn_date(rs.getString("return_date"));
+    			 leave_list[i].setDetail(rs.getString("detail"));
+    			 if (rs.getString("states")!=null)
+    				 leave_list[i].setStates(rs.getString("states"));
+    			 i++;
+             }
+    		 conn.close();
+	    }
 	}  
 //create table student_leave(studentID varchar(15),name varchar(50),reason char,leave_date DATE,return_date DATE ,detail varchar(300),states char;

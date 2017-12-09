@@ -34,7 +34,7 @@ public class Actiontest {
 		a.execute();
 		String result,expect;
 		expect = "1150320218";
-		result = a.students_leave[0].getStudentID();
+		result = a.leave_list[0].getStudentID();
 		assertEquals(result,expect);
 	}
 	@Test

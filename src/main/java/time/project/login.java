@@ -8,7 +8,7 @@ import java.sql.*;
 public class login extends ActionSupport { 
 	   public String logname;//登入名
 	   public String logpass;//密码
-	   public a_student_leave[] students_leave =new  a_student_leave[100]; //学生请假表
+	   public a_student_leave[] leave_list =new  a_student_leave[100]; //学生请假表
 	   a_student_leave stu = new a_student_leave();
 	   
 	   public a_student_leave getStu() {
@@ -24,10 +24,10 @@ public class login extends ActionSupport {
 		   return logpass;
 	   }
 	   public a_student_leave[] getStudents_leave() {
-		return students_leave;
+		return leave_list;
 	   }
 	   public void setStudents_leave(a_student_leave[] students_leave) {
-		   this.students_leave = students_leave;
+		   this.leave_list = students_leave;
 	   }
 	   public void setLogpass(String logpass){
 		   this.logpass = logpass;
@@ -45,30 +45,8 @@ public class login extends ActionSupport {
 	    public String execute()throws Exception{  
 	    	if(verifyadmin()){
 	    		//验证是老师返回请假数据库中的所有请假信息
-	    		Connection con = DBHelper.connect();
-	    		
-	    		 String sql = "SELECT * FROM student_leave;";
-	    		 Statement psmt = con.createStatement();  
-	    		 ResultSet rs = psmt.executeQuery(sql);
-	    		 
-	    		 int i= 0;
-	    		 while (rs.next())
-	             {
-	    			 students_leave[i] = new a_student_leave();
-	    			 
-	    			 students_leave[i].setStudentID(rs.getString("studentID"));
-	    			 students_leave[i].setName(rs.getString("name"));
-	    			 students_leave[i].setReason(rs.getString("reason"));
-	    			 students_leave[i].setLeave_date(rs.getString("leave_date"));
-	    			 students_leave[i].setReturn_date(rs.getString("return_date"));
-	    			 students_leave[i].setDetail(rs.getString("detail"));
-	    			 if (rs.getString("states")!=null)
-	    				 students_leave[i].setStates(rs.getString("states"));
-	    			 
-	    			 i++;
-	             }
-	    		 
-	    		 con.close();
+	    		DBHelper a = new DBHelper();
+	    		a.querystudents(leave_list);
 	    		 return "teacher";
 	    	}
 	    	else if(verifystudent())
@@ -79,6 +57,5 @@ public class login extends ActionSupport {
 	    	}
 	    	else
 	    		return "FALSE";
-	          
 	    }  
 }

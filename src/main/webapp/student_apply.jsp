@@ -170,7 +170,7 @@
           
           <p class="cd-select icon">
          
-            <select class="budget" name = "leave_month">
+            <select class="budget" name = "return_month">
             
 			  <option value="0">请选择月</option>
               <option value="1">1月</option>
@@ -249,25 +249,25 @@
 
           <ul class="cd-form-list">
             <li>
-              <input type="radio" name="radio-button" id="cd-radio-1" checked>
+              <input type="radio" name="reason" id="cd-radio-1" value = "1" checked>
               <label for="cd-radio-1">出国留学</label>
             </li>
               
             <li>
-              <input type="radio" name="radio-button" id="cd-radio-2">
+              <input type="radio" name="reason" id="cd-radio-2" value = "2">
               <label for="cd-radio-2">参加比赛/培训</label>
             </li>
 
             <li>
-              <input type="radio" name="radio-button" id="cd-radio-3">
+              <input type="radio" name="reason" id="cd-radio-3" value = "3">
               <label for="cd-radio-3">国内交流</label>
             </li>
             <li>
-              <input type="radio" name="radio-button" id="cd-radio-4">
+              <input type="radio" name="reason" id="cd-radio-4" value = "4">
               <label for="cd-radio-4">病假</label>
             </li>
             <li>
-              <input type="radio" name="radio-button" id="cd-radio-5">
+              <input type="radio" name="reason" id="cd-radio-5" value = "5">
               <label for="cd-radio-5">其他</label>
             </li>
           </ul>

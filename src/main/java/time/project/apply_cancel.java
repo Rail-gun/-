@@ -13,10 +13,24 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
-public class apply_cancel extends login {
+public class apply_cancel extends ActionSupport {
 	
-	public String leave_year,leave_month,
-	leave_day,return_year,return_month,return_day,detail;
+	public String leave_year,leave_month,reason,
+	leave_day,return_year,return_month,return_day,detail,logname;
+	
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public String getLogname(){
+		return logname;
+	}
+	public void setLogname(String logname)
+	{
+		this.logname = logname;
+	}
 	   public String getLeave_year(){
 		   return leave_year;
 	   }
@@ -69,11 +83,10 @@ public class apply_cancel extends login {
 		   String student_name = "peter";  //需要从数据库中读出，本行仅供测试
 		   return_date = return_year +"-" + return_month + "-" + return_day;
 		   leave_date = leave_year + "-" + leave_month + "-" +leave_day;
-		   String reason = "3",states = "1";  //测试第三条请假原因，设置状态1为申请状态
+		   String states = "1";  //测试第三条请假原因，设置状态1为申请状态
 		   Connection con = DBHelper.connect();
   		 String sql = "insert into student_leave values(?,?,?,?,?,?,?);";
 		try {
-			logname = "1150320218";
 			 PreparedStatement psmt = con.prepareStatement(sql);
 			 psmt.setString(1, logname);
 			 psmt.setString(2, student_name);

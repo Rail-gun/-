@@ -22,7 +22,7 @@
           <canvas id="demo-canvas"></canvas>
           <div class="logo_box">
             <h3>功能选择</h3>
-            <form action="#" name="f" method="post">
+            <form action="apply_cancel" name="f" method="post">
               <div class="mb2"><a class="act-but submit" href="student_apply.jsp" style="color: #FFFFFF">请假</a></div>
             </form>
             <form action="##" name="ff" method="post">
