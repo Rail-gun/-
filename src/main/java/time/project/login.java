@@ -56,7 +56,6 @@ public class login extends ActionSupport {
 	    	}
 	    	else if(verifystudent())
 	    	{
-	    		System.out.println(logname);
 	    		//验证是学生返回到学生请假界面
 	    		HttpSession session = ServletActionContext.getRequest().getSession(); 
 	    		session.setAttribute("studentID", logname); 
