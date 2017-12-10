@@ -26,7 +26,7 @@ import java.sql.*;
 	    }  
 	    public void querystudents(a_student_leave leave_list[]) throws SQLException{
 	    	DBHelper.conn = DBHelper.connect();
-	    	 String sql = "SELECT * FROM student_leave;";
+	    	 String sql = "SELECT * FROM student_leave where states = '1' or states = '3' ;";
     		 Statement psmt = conn.createStatement();  
     		 ResultSet rs = psmt.executeQuery(sql);
     		 int i= 0;
