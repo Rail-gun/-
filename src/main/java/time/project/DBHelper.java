@@ -4,7 +4,7 @@ import java.sql.*;
 	    public static final String url = "jdbc:mysql://127.0.0.1:3306/leaves?characrerEncoding = utf8";  //数据库地址，一会儿我看看能不能弄成远程的
 	    public static final String name = "com.mysql.jdbc.Driver";  
 	    public static final String user = "root";  
-	    public static final String password = "12345abc";  
+	    public static final String password = "HljHhZMK661530";  
 	    public static Connection conn = null;  
 	    										//数据库操作
 	    public static Connection connect() {  
@@ -49,9 +49,10 @@ import java.sql.*;
 	    public a_student_leave querymyleave(String studentID) throws SQLException{
 	    	DBHelper.conn = DBHelper.connect();
 	    	a_student_leave stu_leave = new a_student_leave();
-	    	 String sql = "SELECT "+ studentID +" FROM student_leave where states = '2';";
+	    	 String sql = "select * from student_leave where studentID = \""+ studentID +"\" and states = 2;" ;
 	    	 Statement psmt = conn.createStatement();  
 	    	 ResultSet rs = psmt.executeQuery(sql);
+	    	 while(rs.next()) {
 	    		 stu_leave.setStudentID(studentID);
 	    		 stu_leave.setName(rs.getString("name"));
 	    		 stu_leave.setReason(rs.getString("reason"));
@@ -59,6 +60,8 @@ import java.sql.*;
 	    		 stu_leave.setReturn_date(rs.getString("return_date"));
 	    		 stu_leave.setDetail(rs.getString("detail"));
 	    		 stu_leave.setStates(rs.getString("states"));
+	    	 }
+	    	 conn.close();
 	    	return stu_leave;
 	    }
 	}  
