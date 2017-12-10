@@ -1,10 +1,15 @@
 package time.project;
 import java.io.UnsupportedEncodingException;  
 import javax.servlet.http.HttpServletRequest;  
-import javax.servlet.http.HttpServletResponse;  
-import org.apache.struts2.ServletActionContext;  
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;  
 import java.sql.*;
+import java.util.Map;
 public class login extends ActionSupport { 
 	   public String logname;//登入名
 	   public String logpass;//密码
@@ -53,6 +58,8 @@ public class login extends ActionSupport {
 	    	{
 	    		System.out.println(logname);
 	    		//验证是学生返回到学生请假界面
+	    		HttpSession session = ServletActionContext.getRequest().getSession(); 
+	    		session.setAttribute("logname", logname); 
 	    		return "student";
 	    	}
 	    	else

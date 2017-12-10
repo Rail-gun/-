@@ -2,7 +2,9 @@ package time.project;
 import java.io.UnsupportedEncodingException;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;  
-import org.apache.struts2.ServletActionContext;  
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import javax.servlet.ServletRequest;
@@ -12,12 +14,12 @@ import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
-public class apply_cancel extends ActionSupport {
-	
+public class apply_cancel extends ActionSupport{
 	public String leave_year,leave_month,reason,
 	leave_day,return_year,return_month,return_day,detail,logname;
-	
+
 	public String getReason() {
 		return reason;
 	}
@@ -85,6 +87,10 @@ public class apply_cancel extends ActionSupport {
 		   leave_date = leave_year + "-" + leave_month + "-" +leave_day;
 		   String states = "1";  //测试第三条请假原因，设置状态1为申请状态
 		   Connection con = DBHelper.connect();
+		   HttpServletRequest request =  ServletActionContext.getRequest();
+		   HttpSession session = ServletActionContext.getRequest().getSession(); 
+   		   logname = (String)session.getAttribute("logname");
+		   System.out.println(logname);
   		 String sql = "insert into student_leave values(?,?,?,?,?,?,?);";
 		try {
 			 PreparedStatement psmt = con.prepareStatement(sql);
