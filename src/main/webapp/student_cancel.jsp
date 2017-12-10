@@ -42,13 +42,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+    <% for (int i = 0;i < list.size();i+=6){
+       out.print("<tr>");
+       out.print("<td>"+list.get(i)+"</td>");
+       out.print("</tr>");
+      }
+      %>
+      <!-- <tr>
       <td>张强</td>
       <td>25</td> 
       <td>感冒发烧流鼻涕</td>
       <td>2017-09-09</td>
       
-      </tr>
+      </tr> -->
     </tbody>
     </table>
   </div>
