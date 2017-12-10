@@ -59,7 +59,11 @@ public class login extends ActionSupport {
 	    		System.out.println(logname);
 	    		//验证是学生返回到学生请假界面
 	    		HttpSession session = ServletActionContext.getRequest().getSession(); 
-	    		session.setAttribute("logname", logname); 
+	    		session.setAttribute("studentID", logname); 
+	    		a_student_leave stu_leave;
+	    		DBHelper a = new DBHelper();
+	    		stu_leave=a.querymyleave(logname);
+	    		session.setAttribute("stu_cancel", stu_leave);
 	    		return "student";
 	    	}
 	    	else

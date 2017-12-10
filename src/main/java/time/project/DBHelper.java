@@ -46,5 +46,20 @@ import java.sql.*;
              }
     		 conn.close();
 	    }
+	    public a_student_leave querymyleave(String studentID) throws SQLException{
+	    	DBHelper.conn = DBHelper.connect();
+	    	a_student_leave stu_leave = new a_student_leave();
+	    	 String sql = "SELECT "+ studentID +" FROM student_leave where states = '2';";
+	    	 Statement psmt = conn.createStatement();  
+	    	 ResultSet rs = psmt.executeQuery(sql);
+	    		 stu_leave.setStudentID(studentID);
+	    		 stu_leave.setName(rs.getString("name"));
+	    		 stu_leave.setReason(rs.getString("reason"));
+	    		 stu_leave.setLeave_date(rs.getString("leave_date"));
+	    		 stu_leave.setReturn_date(rs.getString("return_date"));
+	    		 stu_leave.setDetail(rs.getString("detail"));
+	    		 stu_leave.setStates(rs.getString("states"));
+	    	return stu_leave;
+	    }
 	}  
 //create table student_leave(studentID varchar(15),name varchar(50),reason char,leave_date DATE,return_date DATE ,detail varchar(300),states char;

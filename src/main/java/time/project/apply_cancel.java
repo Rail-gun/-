@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class apply_cancel extends ActionSupport{
 	public String leave_year,leave_month,reason,
-	leave_day,return_year,return_month,return_day,detail,logname;
+	leave_day,return_year,return_month,return_day,detail,studentID;
 
 	public String getReason() {
 		return reason;
@@ -26,14 +26,14 @@ public class apply_cancel extends ActionSupport{
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	public String getLogname(){
-		return logname;
+
+	   public String getStudentID() {
+		return studentID;
 	}
-	public void setLogname(String logname)
-	{
-		this.logname = logname;
+	public void setStudentID(String studentID) {
+		this.studentID = studentID;
 	}
-	   public String getLeave_year(){
+	public String getLeave_year(){
 		   return leave_year;
 	   }
 	   public void setLeave_year(String leave_year){
@@ -75,10 +75,10 @@ public class apply_cancel extends ActionSupport{
 	   public void setDetail(String detail){
 		   this.detail = detail;
 	   }
-	   public String insert()
+	   public String apply()
 	   {
 		   System.out.println(leave_year);
-		   System.out.println(logname);
+		   System.out.println(studentID);
 		   
 		   a_student_leave insert_apply = new a_student_leave() ;
 		   String return_date,leave_date;
@@ -89,12 +89,12 @@ public class apply_cancel extends ActionSupport{
 		   Connection con = DBHelper.connect();
 		   HttpServletRequest request =  ServletActionContext.getRequest();
 		   HttpSession session = ServletActionContext.getRequest().getSession(); 
-   		   logname = (String)session.getAttribute("logname");
-		   System.out.println(logname);
+   		   studentID = (String)session.getAttribute("studentID");
+		   System.out.println(studentID);
   		 String sql = "insert into student_leave values(?,?,?,?,?,?,?);";
 		try {
 			 PreparedStatement psmt = con.prepareStatement(sql);
-			 psmt.setString(1, logname);
+			 psmt.setString(1, studentID);
 			 psmt.setString(2, student_name);
 			 psmt.setString(3, reason);
 			 psmt.setString(4, leave_date);

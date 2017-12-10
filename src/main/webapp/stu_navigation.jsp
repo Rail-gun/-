@@ -26,7 +26,7 @@
               <div class="mb2"><a class="act-but submit" href="student_apply.jsp" style="color: #FFFFFF">请假</a></div>
             <!-- </form>
             <form action="##" name="ff" method="post"> -->
-              <div class="mb2"><a class="act-but submit" href="stu_cancel?logname=${logname}" style="color: #FFFFFF;position:absolute; z-index:100;width:330px ">销假</a></div>
+              <div class="mb2"><a class="act-but submit" href="student_cancel.jsp" style="color: #FFFFFF;position:absolute; z-index:100;width:330px ">销假</a></div>
             <!-- </form> -->
           </div>
         </div>
