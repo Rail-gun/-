@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import = "time.project.a_student_leave" %>
+    
 <!doctype html>
 <html lang="zh">
 <head>
@@ -42,11 +44,14 @@
       </tr>
     </thead>
     <tbody>
-    <% for (int i = 0;i < list.size();i+=6){
+    <% 
+       a_student_leave stu = (a_student_leave)session.getAttribute("stu_cancel");
        out.print("<tr>");
-       out.print("<td>"+list.get(i)+"</td>");
+       out.print("<td>"+stu.getStudentID()+"</td>");
+       out.print("<td>"+stu.getName()+"</td>");
+       out.print("<td>"+stu.getReason()+"</td>");
+       out.print("<td>"+stu.getLeave_date()+"</td>");
        out.print("</tr>");
-      }
       %>
       <!-- <tr>
       <td>张强</td>
