@@ -65,7 +65,9 @@
   </div>
 </div>
   <div>
+  <form action="cancel"  method="post">
        <a><input style="color: white; font-weight:bold;"class = "backg" type="submit" value="申请销假"></a>
+  </form>
           </div>
 <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery.basictable.min.js"></script>

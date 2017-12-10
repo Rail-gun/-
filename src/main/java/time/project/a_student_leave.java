@@ -34,16 +34,21 @@ public class a_student_leave {
 		   {
 		   case "1":
 			   this.reason = "出国留学";
+			   break;
 		   case "2":
 			   this.reason = "参加比赛/培训";
+			   break;
 		   case "3":
 			   this.reason = "国内交流";
+			   break;
 		   case "4":
 			   this.reason = "病假";
+			   break;
 		   case "5":
 			   this.reason = "其他";
+			   break;
 		   }
-		   this.reason = reason;
+		  
 	   }
 	   public String getLeave_date(){
 		   return leave_date;
@@ -70,12 +75,16 @@ public class a_student_leave {
 		   switch(states)
 		   {case "1" :   
 		        this.states = "申请请假";
+		        break;
 		   case "2":
 			   this.states = "批准请假";
+			   break;
 		   case "3":
 			   this.states = "申请销假";
+			   break;
 		   case "4":
-			   this.states = "申请销假";
+			   this.states = "批准销假";
+			   break;
 		   }
 	   }
 	    

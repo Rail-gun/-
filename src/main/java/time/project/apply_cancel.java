@@ -77,9 +77,6 @@ public class apply_cancel extends ActionSupport{
 	   }
 	   public String apply()
 	   {
-		   System.out.println(leave_year);
-		   System.out.println(studentID);
-		   
 		   a_student_leave insert_apply = new a_student_leave() ;
 		   String return_date,leave_date;
 		   String student_name = "peter";  //需要从数据库中读出，本行仅供测试
@@ -87,7 +84,6 @@ public class apply_cancel extends ActionSupport{
 		   leave_date = leave_year + "-" + leave_month + "-" +leave_day;
 		   String states = "1";  //测试第三条请假原因，设置状态1为申请状态
 		   Connection con = DBHelper.connect();
-		   HttpServletRequest request =  ServletActionContext.getRequest();
 		   HttpSession session = ServletActionContext.getRequest().getSession(); 
    		   studentID = (String)session.getAttribute("studentID");
 		   System.out.println(studentID);
@@ -102,6 +98,7 @@ public class apply_cancel extends ActionSupport{
 			 psmt.setString(6, detail);
 			 psmt.setString(7, states);
 			 psmt.executeUpdate();
+			 con.close();
 			   return "SUCCESS";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -111,9 +108,10 @@ public class apply_cancel extends ActionSupport{
   		
 	   }
 	   
-	   public String cancel(){
-		   
-		   
+	   public String cancel() throws SQLException{
+		   HttpSession session = ServletActionContext.getRequest().getSession(); 
+   		   studentID = (String)session.getAttribute("studentID");
+   		   DBHelper.cancel(studentID);
 		   return "SUCCESS";
 	   }
 	  

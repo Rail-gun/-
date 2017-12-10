@@ -16,10 +16,14 @@
             <result name="teacher">tea_navigation.jsp</result>  
             <result name="student">stu_navigation.jsp</result>  
         </action>  
-        <action name = "apply" class = "time.project.apply_cancel" method= "insert">
+        <action name = "apply" class = "time.project.apply_cancel" method= "apply">
         <result name = "SUCCESS">login.jsp</result>
         <result name = "FALSE"></result>
         </action >
+        <action name = "cancel" class = "time.project.apply_cancel" method = "cancel">
+        <result name = "SUCCESS">login.jsp</result>
+        <result name = "FALSE"></result>
+        </action>
 
       <!-- <action name="print" class = "time.project.Freemark" method = "toprint">
         </action>
