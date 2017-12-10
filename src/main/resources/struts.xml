@@ -24,6 +24,9 @@
         <result name = "SUCCESS">login.jsp</result>
         <result name = "FALSE"></result>
         </action>
+        <action name = "tea_confirm" class = "time.project.apply_cancel" method = "confirm">
+        <result name = "SUCCESS">teacher_confirm.jsp</result>
+        </action>
 
       <!-- <action name="print" class = "time.project.Freemark" method = "toprint">
         </action>

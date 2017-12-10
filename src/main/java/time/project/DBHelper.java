@@ -4,7 +4,7 @@ import java.sql.*;
 	    public static final String url = "jdbc:mysql://127.0.0.1:3306/leaves?characrerEncoding = utf8";  //数据库地址，一会儿我看看能不能弄成远程的
 	    public static final String name = "com.mysql.jdbc.Driver";  
 	    public static final String user = "root";  
-	    public static final String password = "HljHhZMK661530";  
+	    public static final String password = "12345abc";  
 	    public static Connection conn = null;  
 	    										//数据库操作
 	    public static Connection connect() {  
@@ -24,8 +24,9 @@ import java.sql.*;
 	            e.printStackTrace();  
 	        }  
 	    }  
-	    public void querystudents(a_student_leave leave_list[]) throws SQLException{
+	    public a_student_leave[] querystudents() throws SQLException{ //查询状态为1和3的操作
 	    	DBHelper.conn = DBHelper.connect();
+	    	a_student_leave[] leave_list  = new a_student_leave[100]; //这块是个坑
 	    	 String sql = "SELECT * FROM student_leave where states = '1' or states = '3' ;";
     		 Statement psmt = conn.createStatement();  
     		 ResultSet rs = psmt.executeQuery(sql);
@@ -45,6 +46,7 @@ import java.sql.*;
     			 i++;
              }
     		 conn.close();
+    		 return leave_list;
 	    }
 	    public static a_student_leave querymyleave(String studentID) throws SQLException{
 	    	DBHelper.conn = DBHelper.connect();

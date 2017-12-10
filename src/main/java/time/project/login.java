@@ -3,7 +3,7 @@ import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.util.List;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -13,7 +13,8 @@ import java.util.Map;
 public class login extends ActionSupport { 
 	   public String logname;//登入名
 	   public String logpass;//密码
-	   public a_student_leave[] leave_list =new  a_student_leave[100]; //学生请假表
+	   
+	   public a_student_leave[] leave_list ; //学生请假表
 	   a_student_leave stu = new a_student_leave();
 	   
 	   public a_student_leave getStu() {
@@ -51,7 +52,7 @@ public class login extends ActionSupport {
 	    	if(verifyadmin()){
 	    		//验证是老师返回请假数据库中的所有请假信息
 	    		DBHelper a = new DBHelper();
-	    		a.querystudents(leave_list);
+	    		leave_list = a.querystudents();
 	    		HttpSession session = ServletActionContext.getRequest().getSession(); 
 	    		session.setAttribute("confirm", leave_list); 
 	    		 return "teacher";

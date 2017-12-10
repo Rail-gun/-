@@ -108,10 +108,14 @@ public class apply_cancel extends ActionSupport{
   		
 	   }
 	   
-	   public String cancel() throws SQLException{
+	   public String cancel() throws SQLException{ //学生销假
 		   HttpSession session = ServletActionContext.getRequest().getSession(); 
    		   studentID = (String)session.getAttribute("studentID");
    		   DBHelper.cancel(studentID);
+		   return "SUCCESS";
+	   }
+	   public String confirm() throws SQLException{ //老师确认，还没写完
+		   System.out.println(studentID);
 		   return "SUCCESS";
 	   }
 	  
