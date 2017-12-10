@@ -4,7 +4,7 @@ import java.sql.*;
 	    public static final String url = "jdbc:mysql://127.0.0.1:3306/leaves?characrerEncoding = utf8";  //数据库地址，一会儿我看看能不能弄成远程的
 	    public static final String name = "com.mysql.jdbc.Driver";  
 	    public static final String user = "root";  
-	    public static final String password = "HljHhZMK661530";  
+	    public static final String password = "12345abc";  
 	    public static Connection conn = null;  
 	    										//数据库操作
 	    public static Connection connect() {  
@@ -46,9 +46,10 @@ import java.sql.*;
              }
     		 conn.close();
 	    }
-	    public a_student_leave querymyleave(String studentID) throws SQLException{
+	    public static a_student_leave querymyleave(String studentID) throws SQLException{
 	    	DBHelper.conn = DBHelper.connect();
 	    	a_student_leave stu_leave = new a_student_leave();
+
 	    	 String sql = "select * from student_leave where studentID = \""+ studentID +"\" and states = 2;" ;
 	    	 Statement psmt = conn.createStatement();  
 	    	 ResultSet rs = psmt.executeQuery(sql);
@@ -61,8 +62,15 @@ import java.sql.*;
 	    		 stu_leave.setDetail(rs.getString("detail"));
 	    		 stu_leave.setStates(rs.getString("states"));
 	    	 }
-	    	 conn.close();
+
+            conn.close();
 	    	return stu_leave;
+	    }
+	    public static void cancel(String studentID) throws SQLException{
+	    	DBHelper.conn = DBHelper.connect();
+	    	String sql = "update student_leave set states = '3' where studentID =" + studentID;
+	    	Statement psmt = conn.createStatement();  
+	    	psmt.executeUpdate(sql);
 	    }
 	}  
 //create table student_leave(studentID varchar(15),name varchar(50),reason char,leave_date DATE,return_date DATE ,detail varchar(300),states char;

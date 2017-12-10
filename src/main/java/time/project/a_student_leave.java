@@ -48,6 +48,8 @@ public class a_student_leave {
 			   this.reason = "其他";
 			   break;
 		   }
+
+		  
 	   }
 	   public String getLeave_date(){
 		   return leave_date;
@@ -82,7 +84,8 @@ public class a_student_leave {
 			   this.states = "申请销假";
 			   break;
 		   case "4":
-			   this.states = "申请销假";
+			   this.states = "批准销假";
+
 			   break;
 		   }
 	   }

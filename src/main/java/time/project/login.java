@@ -56,13 +56,11 @@ public class login extends ActionSupport {
 	    	}
 	    	else if(verifystudent())
 	    	{
-	    		System.out.println(logname);
 	    		//验证是学生返回到学生请假界面
 	    		HttpSession session = ServletActionContext.getRequest().getSession(); 
 	    		session.setAttribute("studentID", logname); 
 	    		a_student_leave stu_leave;
-	    		DBHelper a = new DBHelper();
-	    		stu_leave=a.querymyleave(logname);
+	    		stu_leave=DBHelper.querymyleave(logname);
 	    		session.setAttribute("stu_cancel", stu_leave);
 	    		return "student";
 	    	}

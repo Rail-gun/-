@@ -40,7 +40,7 @@ public class Actiontest {
 	@Test
 	public void applytest() throws Exception{
 		apply_cancel a = new apply_cancel();
-		a.logname = "1150320217";
+		a.studentID = "1150320217";
 		a.leave_year = "2017";
 		a.leave_month = "1";
 		a.leave_day = "1";
@@ -48,7 +48,7 @@ public class Actiontest {
 		a.return_month = "2";
 		a.return_day = "1";
 		a.detail = "save the world";
-		a.insert();
+		a.apply();
 	}
 
 }
