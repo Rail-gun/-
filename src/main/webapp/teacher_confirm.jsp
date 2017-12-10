@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import = "time.project.a_student_leave" %>
+<%@ page import="java.util.List"%>
+
 <!doctype html>
 <html lang="zh">
 <head>
@@ -46,51 +49,23 @@
       </tr>
     </thead>
     <tbody>
-	<%-- <tr class="success">
-		<%a_student_leave students_leave = (a_student_leave) session.getAttribute("list");
-		for (int i = 0; i < list.size(); i+=6) 
-		{
-			out.print("<td align=\"center\">"+list.get(i)+"</td>");
-			out.print("<td align=\"center\">"+list.get(i+1)+"</td>");
-			out.print("<td align=\"center\">"+list.get(i+2)+"</td>");
-			out.print("<td align=\"center\">"+list.get(i+3)+"</td>");
-			out.print("<td align=\"center\">"+list.get(i+4)+"</td>");
-			out.print("<td align=\"center\">"+list.get(i+5)+"</td>");
-			out.print("<td align=\"center\"><a href=Goto_edit?isbn="+list.get(i)+"><button class='btn btn-default btn-primary' type=\"button\">修改</button></a></td>");
-			out.print("<td align=\"center\"><a href=Delete?isbn="+list.get(i)+"><button class='btn btn-default btn-primary' type=\"button\">删除</button></a></td>");
-		}
-		%>
-		</tr> --%>
-      <tr>
-      <td>1</td>
-      <td>张强</td>
-      <td>25</td> 
-      <td>感冒发烧流鼻涕</td>
-      <td>2017-01-08</td>
-      <td>请假</td>
-      <td><a href=Goto_edit?isbn=""><button class='btn btn-default btn-primary' style="color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px" type="button">确认</button></a></td>
-      <td><a href=toprint?isbn=""><button class='btn btn-default btn-primary' style="color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px" type="button">打印</button></a></td>
-      </tr>
-      <tr>
-      <td>2</td>
-      <td>钟铭凯</td>
-      <td>18</td> 
-      <td>精神亢奋</td>
-      <td>2017-01-08</td>
-      <td>请假</td>
-      <td><a href=Goto_edit?isbn=""><button class='btn btn-default btn-primary' style="color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px" type="button">确认</button></a></td>
-      <td><a href=Goto_edit?isbn=""><button class='btn btn-default btn-primary' style="color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px" type="button">打印</button></a></td>
-      </tr>
-      <tr>
-      <td>3</td>
-      <td>李书彬</td>
-      <td>40</td> 
-      <td>不告诉你</td>
-      <td>2016-08-11</td>
-      <td>销假</td>
-      <td><a href=Goto_edit?isbn=""><button class='btn btn-default btn-primary' style="color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px" type="button">确认</button></a></td>
-      <td><a href=Goto_edit?isbn=""><button class='btn btn-default btn-primary' style="color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px" type="button">打印</button></a></td>
-      </tr>
+	     <% 
+	     List<a_student_leave> list = (List<a_student_leave>)session.getAttribute("confirm");
+	     for(int i = 0;i<list.size();i++){
+       out.print("<tr>");
+       out.print("<td>"+i+"</td>");
+       out.print("<td>"+list.get(i).getStudentID()+"</td>");
+       out.print("<td>"+list.get(i).getName()+"</td>");
+       out.print("<td>"+list.get(i).getReason()+"</td>");
+       out.print("<td>"+list.get(i).getLeave_date()+"</td>");
+       out.print("<td>"+list.get(i).getStates()+"</td>");
+       out.print("<td><a href=\"tea_confirm?studentID="+list.get(i).getStudentID()+"><button class='btn btn-default btn-primary' style=\"color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px\" type=\"button\">确认</button></a></td>");
+       out.print("<td><a href=\"tea_print?studentID="+list.get(i).getStudentID()+"><button class='btn btn-default btn-primary' style=\"color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px\" type=\"button\">打印</button></a></td>");
+       out.print("</tr>");
+	     }
+      %>
+      
+      
     </tbody>
     </table>
   </div>
