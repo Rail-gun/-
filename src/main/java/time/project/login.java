@@ -14,7 +14,7 @@ public class login extends ActionSupport {
 	   public String logname;//登入名
 	   public String logpass;//密码
 	   
-	   public a_student_leave[] leave_list ; //学生请假表
+	   public List<a_student_leave> leave_list ; //学生请假表
 	   a_student_leave stu = new a_student_leave();
 	   
 	   public a_student_leave getStu() {
@@ -29,10 +29,10 @@ public class login extends ActionSupport {
 	   public String getLogpass(){
 		   return logpass;
 	   }
-	   public a_student_leave[] getStudents_leave() {
+	   public List<a_student_leave> getStudents_leave() {
 		return leave_list;
 	   }
-	   public void setStudents_leave(a_student_leave[] students_leave) {
+	   public void setStudents_leave(List<a_student_leave> students_leave) {
 		   this.leave_list = students_leave;
 	   }
 	   public void setLogpass(String logpass){

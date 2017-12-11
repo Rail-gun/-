@@ -1,4 +1,8 @@
 package time.project; 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import java.sql.*;
 	public class DBHelper {  
 	    public static final String url = "jdbc:mysql://127.0.0.1:3306/leaves?characrerEncoding = utf8";  //数据库地址，一会儿我看看能不能弄成远程的
@@ -24,29 +28,29 @@ import java.sql.*;
 	            e.printStackTrace();  
 	        }  
 	    }  
-	    public a_student_leave[] querystudents() throws SQLException{ //查询状态为1和3的操作
+	    public List<a_student_leave> querystudents() throws SQLException{ //查询状态为1和3的操作
 	    	DBHelper.conn = DBHelper.connect();
-	    	a_student_leave[] leave_list  = new a_student_leave[100]; //这块是个坑
+	    	List<a_student_leave> list = new ArrayList<a_student_leave>();
+	    	a_student_leave leave  = new a_student_leave(); //这块是个坑
 	    	 String sql = "SELECT * FROM student_leave where states = '1' or states = '3' ;";
     		 Statement psmt = conn.createStatement();  
     		 ResultSet rs = psmt.executeQuery(sql);
     		 int i= 0;
     		 while (rs.next())
              {
-    			 leave_list[i] = new a_student_leave();
-    			 
-    			 leave_list[i].setStudentID(rs.getString("studentID"));
-    			 leave_list[i].setName(rs.getString("name"));
-    			 leave_list[i].setReason(rs.getString("reason"));
-    			 leave_list[i].setLeave_date(rs.getString("leave_date"));
-    			 leave_list[i].setReturn_date(rs.getString("return_date"));
-    			 leave_list[i].setDetail(rs.getString("detail"));
+    			 leave.setStudentID(rs.getString("studentID"));
+    			 leave.setName(rs.getString("name"));
+    			 leave.setReason(rs.getString("reason"));
+    			 leave.setLeave_date(rs.getString("leave_date"));
+    			 leave.setReturn_date(rs.getString("return_date"));
+    			 leave.setDetail(rs.getString("detail"));
     			 if (rs.getString("states")!=null)
-    				 leave_list[i].setStates(rs.getString("states"));
+    				 leave.setStates(rs.getString("states"));
     			 i++;
+    			 list.add(leave);
              }
     		 conn.close();
-    		 return leave_list;
+    		 return list;
 	    }
 	    public static a_student_leave querymyleave(String studentID) throws SQLException{
 	    	DBHelper.conn = DBHelper.connect();
@@ -64,7 +68,6 @@ import java.sql.*;
 	    		 stu_leave.setDetail(rs.getString("detail"));
 	    		 stu_leave.setStates(rs.getString("states"));
 	    	 }
-
             conn.close();
 	    	return stu_leave;
 	    }
