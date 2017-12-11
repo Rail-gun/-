@@ -8,7 +8,7 @@ import java.sql.*;
 	    public static final String url = "jdbc:mysql://127.0.0.1:3306/leaves?characrerEncoding = utf8";  //数据库地址，一会儿我看看能不能弄成远程的
 	    public static final String name = "com.mysql.jdbc.Driver";  
 	    public static final String user = "root";  
-	    public static final String password = "12345abc";  
+	    public static final String password = "HljHhZMK661530";  
 	    public static Connection conn = null;  
 	    										//数据库操作
 	    public static Connection connect() {  
