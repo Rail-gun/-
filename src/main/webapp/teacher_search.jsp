@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="java.util.List"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ page import = "time.project.a_student_leave" %>
 <!doctype html>
 <html lang="zh">
 <head>
@@ -44,30 +47,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-      <td>1</td>
-      <td>张强</td>
-      <td>25</td> 
-      <td>感冒发烧流鼻涕</td>
-      <td>2017-09-09</td>
-      <td><a href=Goto_edit?isbn=""><button class='btn btn-default btn-primary' style="color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px" type="button">打印</button></a></td>
-      </tr>
-      <tr>
-      <td>2</td>
-      <td>钟铭凯</td>
-      <td>18</td> 
-      <td>精神亢奋</td>
-      <td>2017-01-08</td>
-      <td><a href=Goto_edit?isbn=""><button class='btn btn-default btn-primary' style="color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px" type="button">打印</button></a></td>
-      </tr>
-      <tr>
-      <td>3</td>
-      <td>李书彬</td>
-      <td>40</td> 
-      <td>不告诉你</td>
-      <td>2016-08-11</td>
-      <td><a href=Goto_edit?isbn=""><button class='btn btn-default btn-primary' style="color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px" type="button">打印</button></a></td>
-      </tr>
+      <% 
+       a_student_leave[] list = (a_student_leave[])session.getAttribute("search");
+
+       for(int i = 0;list[i]!=null;i++){
+       out.print("<tr>");
+       out.print("<td>"+(i+1)+"</td>");
+       out.print("<td>"+list[i].getStudentID()+"</td>");
+       out.print("<td>"+list[i].getName()+"</td>");
+       out.print("<td>"+list[i].getReason()+"</td>");
+       out.print("<td>"+list[i].getLeave_date()+"</td>");
+       out.print("<td><button onclick = \"window.location.href='tea_search?studentID="+list[i].getStudentID()+"'\" class='btn btn-default btn-primary' style=\"color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px\" type=\"button\">打印<tton></td>");
+       out.print("</tr>");
+       }
+      %>
+      
     </tbody>
     </table>
   </div>
