@@ -51,10 +51,8 @@ public class login extends ActionSupport {
 	    public String execute()throws Exception{  
 	    	if(verifyadmin()){
 	    		//验证是老师返回请假数据库中的所有请假信息
-	    		DBHelper a = new DBHelper();
-	    		leave_list = a.querystudents();
-	    		HttpSession session = ServletActionContext.getRequest().getSession(); 
-	    		session.setAttribute("confirm", leave_list); 
+	    		DBHelper.querystudents();
+	    		DBHelper.search();
 	    		 return "teacher";
 	    	}
 	    	else if(verifystudent())

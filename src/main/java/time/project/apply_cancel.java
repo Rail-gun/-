@@ -116,6 +116,11 @@ public class apply_cancel extends ActionSupport{
 	   }
 	   public String confirm() throws SQLException{ //老师确认，还没写完
 		   System.out.println(studentID);
+		   DBHelper.confirm(studentID); //通过DBHelper中的confirm方法确认学生状态
+		   return "SUCCESS";
+	   }
+	   public String search() throws SQLException{
+		   DBHelper.search();
 		   return "SUCCESS";
 	   }
 	  
