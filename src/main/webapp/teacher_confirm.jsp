@@ -51,18 +51,19 @@
     </thead>
     <tbody>
 	     <% 
-	     a_student_leave[] list = (a_student_leave[])session.getAttribute("confirm");
+	     List<a_student_leave> list = (List<a_student_leave>)session.getAttribute("confirm");
 
-	     for(int i = 0;list[i]!=null;i++){
+	     for(int i = 0;i < list.size();i++){
        out.print("<tr>");
        out.print("<td>"+(i+1)+"</td>");
-       out.print("<td>"+list[i].getStudentID()+"</td>");
-       out.print("<td>"+list[i].getName()+"</td>");
-       out.print("<td>"+list[i].getReason()+"</td>");
-       out.print("<td>"+list[i].getLeave_date()+"</td>");
-       out.print("<td>"+list[i].getStates()+"</td>");
-       out.print("<td><button onclick = \"window.location.href='tea_confirm?studentID="+list[i].getStudentID()+"'\" class='btn btn-default btn-primary' style=\"color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px\" type=\"button\">确认<tton></td>");
-       out.print("<td><button onclick = \"javascript:window.location.href='createWord.action?studentID="+list[i].getStudentID()+"'\" class='btn btn-default btn-primary' style=\"color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px\" type=\"button\">打印<tton></td>");
+
+       out.print("<td>"+list.get(i).getStudentID()+"</td>");
+       out.print("<td>"+list.get(i).getName()+"</td>");
+       out.print("<td>"+list.get(i).getReason()+"</td>");
+       out.print("<td>"+list.get(i).getLeave_date()+"</td>");
+       out.print("<td>"+list.get(i).getStates()+"</td>");
+       out.print("<td><button onclick = \"window.location.href='tea_confirm?studentID="+list.get(i).getStudentID()+"'\" class='btn btn-default btn-primary' style=\"color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px\" type=\"button\">确认<tton></td>");
+       out.print("<td><button onclick = \"javascript:window.location.href='createWord.action?studentID="+list.get(i).getStudentID()+"'\" class='btn btn-default btn-primary' style=\"color: white; font-weight:bold;BACKGROUND-COLOR: #56a2cf;border-radius:4px;BORDER : 1px solid #56a2cf;width:60px;HEIGHT: 30px\" type=\"button\">打印<tton></td>");
        out.print("</tr>");
 	     }
       %>

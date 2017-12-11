@@ -27,6 +27,7 @@
         <action name = "tea_confirm" class = "time.project.apply_cancel" method = "confirm">
         <result name = "SUCCESS">teacher_confirm.jsp</result>
         </action>
+
         <action name="createWord" class="time.project.WordAction" method="createWord">
    		<result name="createWordSuccess" type="redirectAction">
   		<param name="actionName">dowloadWord</param> 
@@ -44,6 +45,12 @@
   		</result>
   		<result name="error">/error.jsp</result>
  	    </action>
+
+        <action name = "tea_search" class = "time.project.apply_cancel" method = "search">
+        <result name = "SUCCESS">teacher_search.jsp</result>
+        </action>
+        
+
       <!-- <action name="print" class = "time.project.Freemark" method = "toprint">
         </action>
  -->        

@@ -36,9 +36,9 @@ public class Actiontest {
 		a.execute();
 		String result,expect;
 		expect = "1150320218";
-		result = a.leave_list[0].getStudentID();
+		result = "1";
 		assertEquals(result,expect);
-	}
+	} //
 	@Test
 	public void applytest() throws Exception{
 		apply_cancel a = new apply_cancel();
