@@ -27,7 +27,23 @@
         <action name = "tea_confirm" class = "time.project.apply_cancel" method = "confirm">
         <result name = "SUCCESS">teacher_confirm.jsp</result>
         </action>
-
+        <action name="createWord" class="time.project.WordAction" method="createWord">
+   		<result name="createWordSuccess" type="redirectAction">
+  		<param name="actionName">dowloadWord</param> 
+  		<param name="filePath">${filePath}</param>
+   		<param name="fileOnlyName">${fileOnlyName}</param>
+  		<param name="fileName">${fileName}</param>
+   		<param name="encode">true</param>
+   		</result>
+	    </action>
+		<action name="dowloadWord" class="time.project.WordAction" method="dowloadWord">
+   		<result name="dowloadWord" type="stream">
+  		<param name="contentDisposition">attachment;filename="${fileName}"</param>
+  		<param name="inputName">wordFile</param>
+  		<param name="encode">true</param>
+  		</result>
+  		<result name="error">/error.jsp</result>
+ 	    </action>
       <!-- <action name="print" class = "time.project.Freemark" method = "toprint">
         </action>
  -->        
