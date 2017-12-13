@@ -27,7 +27,7 @@ public class apply_cancel extends ActionSupport{
 		this.reason = reason;
 	}
 
-	   public String getStudentID() {
+	public String getStudentID() {
 		return studentID;
 	}
 	public void setStudentID(String studentID) {
@@ -114,7 +114,7 @@ public class apply_cancel extends ActionSupport{
    		   DBHelper.cancel(studentID);
 		   return "SUCCESS";
 	   }
-	   public String confirm() throws SQLException{ //老师确认，还没写完
+	   public String confirm() throws SQLException{ 
 		   System.out.println(studentID);
 		   DBHelper.confirm(studentID); //通过DBHelper中的confirm方法确认学生状态
 		   return "SUCCESS";
@@ -122,6 +122,5 @@ public class apply_cancel extends ActionSupport{
 	   public String search() throws SQLException{
 		   DBHelper.search();
 		   return "SUCCESS";
-	   }
-	  
+	   } 
 }

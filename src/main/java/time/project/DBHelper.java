@@ -14,23 +14,23 @@ import java.sql.*;
 	    public static final String password = "887766554wxs";  
 	    public static Connection conn = null;  
 	    										//数据库操作
-	    public static Connection connect() {  
-	        try {  
-	            Class.forName(name);//指定连接类型  
-	            conn = DriverManager.getConnection(url, user, password);//获取连接  
-	            return conn;       
-	        } catch (Exception e) {  
-	            e.printStackTrace(); 
-	            return null;   
+	    public static Connection connect() {
+	        try {
+	            Class.forName(name);//指定连接类型
+	            conn = DriverManager.getConnection(url, user, password);//获取连接 
+	            return conn;
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return null;
 	        }
-	    } 
-	    public void close() {  
-	        try {  
+	    }
+	    public void close() {
+	        try {
 	            DBHelper.conn.close();  
 	        } catch (SQLException e) {  
 	            e.printStackTrace();  
-	        }  
-	    }  
+	        }
+	    }
 	    //查询状态为申请请假和申请销假的学生
 	    public static void querystudents() throws SQLException{ //查询状态为1和3的操作
 	    	DBHelper.conn = DBHelper.connect();
@@ -77,6 +77,26 @@ import java.sql.*;
 	    	 }
             conn.close();
 	    	return stu_leave;
+	    }
+	    
+	    //导出学生信息至word中
+	    public static a_student_leave createWord(String studentID) throws SQLException{
+	    	DBHelper.conn = DBHelper.connect();
+	    	a_student_leave stu_leave = new a_student_leave();
+	    	String sql = "select * from student_leave where studentID = \""+ studentID +"\";" ;
+	    	Statement psmt = conn.createStatement();  
+	    	ResultSet rs = psmt.executeQuery(sql);
+	    	 while(rs.next()) {
+	    		 stu_leave.setStudentID(studentID);
+	    		 stu_leave.setName(rs.getString("name"));
+	    		 stu_leave.setReason(rs.getString("reason"));
+	    		 stu_leave.setLeave_date(rs.getString("leave_date"));
+	    		 stu_leave.setReturn_date(rs.getString("return_date"));
+	    		 stu_leave.setDetail(rs.getString("detail"));
+	    		 stu_leave.setStates(rs.getString("states"));
+	    	 }
+           conn.close();
+           return stu_leave;
 	    }
 	    //学生销假
 	    public static void cancel(String studentID) throws SQLException{
@@ -137,6 +157,5 @@ import java.sql.*;
 	    	 HttpSession session = ServletActionContext.getRequest().getSession();
 	    	 session.setAttribute("search", list);
 		}
-		
 	}  
 //create table student_leave(studentID varchar(15),name varchar(50),reason char,leave_date DATE,return_date DATE ,detail varchar(300),states char;
